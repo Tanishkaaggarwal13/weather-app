@@ -25,6 +25,15 @@ A clean, responsive weather app built with **HTML, CSS, and JavaScript**. No API
 
 ## 📁 Project Structure
 
+```
+weather-app/
+│
+├── index.html          # Main HTML structure & layout
+├── style.css           # All styling, animations & responsive design
+├── script.js           # Weather logic, API calls & DOM manipulation
+└── README.md           # Project documentation
+```
+
 ---
 
 ## 🚀 Getting Started
