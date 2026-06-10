@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather App</title>
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1>Skies</h1>
+    <p>Real-time weather, anywhere</p>
+  </header>
+
+  <div class="search-row">
+    <input type="text" id="city-input" placeholder="Search city..." />
+    <button id="search-btn" onclick="searchCity()">Search</button>
+    <button class="loc-btn" onclick="getLocation()" title="Use my location">📍</button>
+  </div>
+
+  <div class="error" id="error-box"></div>
+  <div class="loading" id="loading"><span class="spinner"></span> Fetching weather…</div>
+
+  <div class="main-card" id="main-card">
+    <div class="city-name" id="city-name">—</div>
+    <div class="city-country" id="city-country">—</div>
+    <div class="temp-row">
+      <div>
+        <div class="temp-big" id="temp-big">—<span class="temp-unit">°C</span></div>
+        <div class="weather-desc" id="weather-desc">—</div>
+        <div class="feels-like" id="feels-like">Feels like —°C</div>
+      </div>
+      <div class="weather-icon" id="weather-icon">🌤️</div>
+    </div>
+  </div>
+
+  <div class="stats-grid" id="stats-grid">
+    <div class="stat-card">
+      <div class="stat-icon">💧</div>
+      <div><div class="stat-label">Humidity</div><div class="stat-val" id="humidity">—</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">💨</div>
+      <div><div class="stat-label">Wind</div><div class="stat-val" id="wind">—</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">🌡️</div>
+      <div><div class="stat-label">UV Index</div><div class="stat-val" id="uv">—</div></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon">👁️</div>
+      <div><div class="stat-label">Visibility</div><div class="stat-val" id="visibility">—</div></div>
+    </div>
+  </div>
+
+  <div class="hourly-section" id="hourly-section">
+    <div class="section-title">Hourly forecast</div>
+    <div class="hourly-scroll" id="hourly-scroll"></div>
+  </div>
+
+  <div class="forecast-section" id="forecast-section">
+    <div class="section-title">7-day forecast</div>
+    <div id="forecast-list"></div>
+  </div>
+
+  <div class="update-time" id="update-time"></div>
+
+  <div class="empty" id="empty-state">
+    <div class="empty-icon">🌤️</div>
+    <h2>No city selected yet</h2>
+    <p>Search for a city above or tap 📍 to use your current location.</p>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=DM+Serif+Display&display=swap');
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --sky: #1a6fa8;
+  --sky-dark: #0d3d5e;
+  --bg: #f0f6fc;
+  --card: #ffffff;
+  --text: #12263a;
+  --text2: #5a7a94;
+  --border: rgba(26,111,168,0.12);
+  --radius: 16px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 24px 16px 48px;
+}
+
+.app { max-width: 540px; margin: 0 auto; }
+
+header { text-align: center; margin-bottom: 28px; }
+header h1 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px; font-weight: 400;
+  color: var(--sky-dark); letter-spacing: -0.5px;
+}
+header p { font-size: 13px; color: var(--text2); margin-top: 4px; }
+
+.search-row { display: flex; gap: 10px; margin-bottom: 24px; }
+.search-row input {
+  flex: 1; padding: 12px 16px;
+  border: 1.5px solid var(--border); border-radius: 12px;
+  font-size: 15px; font-family: inherit;
+  background: var(--card); color: var(--text); outline: none;
+  transition: border-color 0.2s;
+}
+.search-row input:focus { border-color: var(--sky); }
+.search-row input::placeholder { color: var(--text2); }
+.search-row button {
+  padding: 12px 20px; background: var(--sky);
+  color: #fff; border: none; border-radius: 12px;
+  font-size: 14px; font-weight: 500; cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+.search-row button:hover { background: var(--sky-dark); }
+.search-row button:active { transform: scale(0.97); }
+
+.loc-btn {
+  display: flex; align-items: center; gap: 6px;
+  background: transparent; border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 12px 16px;
+  color: var(--text2); font-size: 13px; cursor: pointer;
+  transition: border-color 0.2s, color 0.2s; font-family: inherit;
+}
+.loc-btn:hover { border-color: var(--sky); color: var(--sky); }
+
+.error {
+  background: #fff3f3; border: 1px solid #ffcaca;
+  color: #c0392b; border-radius: 10px;
+  padding: 12px 16px; font-size: 14px;
+  margin-bottom: 16px; display: none;
+}
+
+.main-card {
+  background: var(--sky); border-radius: var(--radius);
+  padding: 28px 28px 24px; color: #fff;
+  margin-bottom: 16px; display: none;
+  position: relative; overflow: hidden;
+}
+.main-card::before {
+  content: ''; position: absolute;
+  top: -40px; right: -40px;
+  width: 180px; height: 180px;
+  background: rgba(255,255,255,0.07); border-radius: 50%;
+}
+.main-card::after {
+  content: ''; position: absolute;
+  bottom: -60px; left: -20px;
+  width: 200px; height: 200px;
+  background: rgba(255,255,255,0.05); border-radius: 50%;
+}
+
+.city-name { font-size: 22px; font-weight: 600; letter-spacing: -0.3px; }
+.city-country { font-size: 13px; opacity: 0.75; margin-top: 2px; }
+
+.temp-row {
+  display: flex; align-items: center;
+  justify-content: space-between; margin-top: 20px;
+}
+.temp-big {
+  font-family: 'DM Serif Display', serif;
+  font-size: 72px; font-weight: 400;
+  line-height: 1; letter-spacing: -2px;
+}
+.temp-unit { font-size: 28px; opacity: 0.7; vertical-align: super; font-weight: 300; }
+.weather-icon { font-size: 68px; line-height: 1; }
+.weather-desc { font-size: 16px; opacity: 0.9; margin-top: 10px; text-transform: capitalize; }
+.feels-like { font-size: 13px; opacity: 0.7; margin-top: 4px; }
+
+.stats-grid {
+  display: none; grid-template-columns: 1fr 1fr;
+  gap: 12px; margin-bottom: 16px;
+}
+.stat-card {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 12px; padding: 16px;
+  display: flex; align-items: center; gap: 12px;
+}
+.stat-icon { font-size: 24px; flex-shrink: 0; }
+.stat-label {
+  font-size: 11px; color: var(--text2);
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px;
+}
+.stat-val { font-size: 18px; font-weight: 600; color: var(--text); }
+
+.forecast-section, .hourly-section {
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 20px;
+  margin-bottom: 16px; display: none;
+}
+.hourly-section { overflow: hidden; }
+.section-title {
+  font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.8px;
+  color: var(--text2); margin-bottom: 16px;
+}
+
+.forecast-row {
+  display: flex; justify-content: space-between;
+  align-items: center; padding: 10px 0;
+  border-bottom: 1px solid var(--border); font-size: 14px;
+}
+.forecast-row:last-child { border-bottom: none; }
+.fc-day { color: var(--text2); width: 80px; }
+.fc-icon { font-size: 20px; }
+.fc-desc { color: var(--text2); font-size: 13px; flex: 1; text-align: center; }
+.fc-high { font-weight: 600; color: var(--text); }
+.fc-low { color: var(--text2); margin-left: 6px; font-size: 13px; }
+
+.hourly-scroll {
+  display: flex; gap: 8px;
+  overflow-x: auto; padding-bottom: 8px; scrollbar-width: thin;
+}
+.hour-chip {
+  flex-shrink: 0; background: var(--bg);
+  border-radius: 10px; padding: 10px 14px;
+  text-align: center; min-width: 64px;
+}
+.hour-chip.now { background: var(--sky); color: #fff; }
+.hour-time { font-size: 11px; color: var(--text2); margin-bottom: 4px; }
+.hour-chip.now .hour-time { color: rgba(255,255,255,0.8); }
+.hour-icon { font-size: 20px; margin: 4px 0; }
+.hour-temp { font-size: 14px; font-weight: 600; color: var(--text); }
+.hour-chip.now .hour-temp { color: #fff; }
+
+.loading {
+  text-align: center; padding: 32px;
+  color: var(--text2); font-size: 14px; display: none;
+}
+.spinner {
+  display: inline-block; width: 22px; height: 22px;
+  border: 2px solid var(--border); border-top-color: var(--sky);
+  border-radius: 50%; animation: spin 0.7s linear infinite;
+  margin-right: 8px; vertical-align: middle;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.empty { text-align: center; padding: 48px 24px; color: var(--text2); }
+.empty-icon { font-size: 56px; margin-bottom: 12px; }
+.empty h2 { font-size: 18px; font-weight: 500; color: var(--text); margin-bottom: 6px; }
+.empty p { font-size: 14px; line-height: 1.6; }
+
+.update-time {
+  text-align: center; font-size: 12px;
+  color: var(--text2); margin-top: 8px; display: none;
+}
